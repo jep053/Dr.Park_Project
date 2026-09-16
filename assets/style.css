@@ -221,7 +221,7 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
   letter-spacing: -0.03em;
   margin: 0 0 8px;
 }
-.section .sub { font-size: 15px; color: var(--ink2); margin: 0 0 32px; }
+.section .sub { font-size: 17px; color: var(--ink2); margin: 0 0 32px; }
 
 /* ---------- 4up category cards (home) ---------- */
 .cat-grid {
