@@ -127,26 +127,48 @@
   </div>
 </section>
 
-<!-- 3. 오시는 길 -->
+<!-- 3. 오시는 길 (참고 사이트형 2열 구조) -->
 <section class="section" id="location">
-  <div class="wrap"><h2>오시는 길</h2></div>
-  <div class="location-grid">
-    <div class="info">
-      <dl>
-        <div class="row"><dt>주소</dt> <dd>부산광역시 남구 용호로 141, 5층</dd></div>
-        <div class="row"><dt>전화</dt> <dd>051-621-7105</dd></div>
-        <div class="row"><dt>평일</dt> <dd>09:00 ~ 18:00</dd></div>
-        <div class="row"><dt>토요일</dt> <dd>08:30 ~ 13:00</dd></div>
-        <div class="row"><dt>점심시간</dt> <dd>13:00 ~ 14:00</dd></div>
-        <span style="color: #E4572E; font-weight: 600;">※ 일요일·공휴일 휴진</span>
-        <div class="row"><dt>주차</dt> <dd>건물 내 주차장 이용 가능</dd></div>
-      </dl>
-      <div class="btn-row">
-        <a class="pill-btn" href="tel:051-621-7105">전화 문의</a>
-        <a class="pill-btn outline" href="about.html">병원소개 보기</a>
+  <div class="wrap">
+    
+    <div style="text-align: center; margin-bottom: 40px;">
+      <span style="font-size: 0.85rem; color: var(--brand); font-weight: 700; letter-spacing: 2px; text-transform: uppercase;">LOCATION</span>
+      <h2 style="margin-top: 4px;">오시는 길</h2>
+    </div>
+
+    <!-- 약도와 텍스트를 나란히 배치하는 2열 그리드 -->
+    <div class="location-grid" style="align-items: center; gap: 40px;">
+      
+      <!-- 왼쪽: 윤곽선 없는 약도 이미지 -->
+      <div class="map-box">
+        <img src="assets/img/location-map.jpeg" alt="박현용내과의원 오시는 길 약도" class="location-illustration">
+      </div>
+
+      <!-- 오른쪽: 오시는 길 상세 안내 -->
+      <div class="info">
+        <h3 style="font-size: 1.4rem; margin-bottom: 16px;">박현용내과의원 오시는 길</h3>
+        
+        <dl style="line-height: 1.8;">
+          <div class="row" style="margin-bottom: 8px;"><dt style="width: 70px; font-weight: 600;">주소</dt> <dd>부산광역시 남구 용호로 141, 5층</dd></div>
+          <div class="row" style="margin-bottom: 8px;"><dt style="width: 70px; font-weight: 600;">전화</dt> <dd style="font-weight: 700; font-size: 1.1rem; color: var(--brand);">051-621-7105</dd></div>
+          <div class="row" style="margin-bottom: 8px;"><dt style="width: 70px; font-weight: 600;">진료시간</dt> <dd>평일 09:00 ~ 18:00<br>토요일 08:30 ~ 13:00<br><span style="color: #E4572E; font-weight: 600;">(점심시간 13:00~14:00 / 일·공휴일 휴진)</span></dd></div>
+          <div class="row"><dt style="width: 70px; font-weight: 600;">주차안내</dt> <dd>건물 내 주차장 이용 가능</dd></div>
+        </dl>
+
+        <div class="btn-row" style="margin-top: 24px;">
+          <a class="pill-btn" href="tel:051-621-7105">전화 문의하기</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 하단: 네이버/카카오 지도 임베드 (필요시 배치) -->
+    <div style="margin-top: 60px;">
+      <div class="map-note" style="width: 100%; height: 320px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line);">
+        지도 임베드 자리
       </div>
     </div>
-    <div class="map-note">지도 임베드 자리</div>
+
   </div>
 </section>
 
