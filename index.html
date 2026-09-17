@@ -26,8 +26,6 @@
     ]
   }
   </script>
-  <!-- 카카오 지도 API (발급받은 JavaScript Key 적용) -->
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bdd23a459f59ac65e5f2d9a77dbebcfc&libraries=services"></script>
 </head>
 <body>
 <div class="utility-bar"><div class="wrap"><a href="index.html#location">오시는길</a></div></div>
@@ -168,21 +166,19 @@
     <!-- 하단: 카카오맵 퍼가기 (반응형 정돈 버전) -->
     <div style="margin-top: 40px; width: 100%;">
 
-      <!-- 1. 실제 동적 지도 영역 -->
-      <div id="kakao-map" style="width: 100%; height: 360px; border-radius: 8px 8px 0 0; border: 1px solid #dfdfdf; border-bottom: none;"></div>
-
-      <!-- 2. 카카오맵 하단 로고 및 '지도 크게 보기' 바 -->
-      <div style="overflow: hidden; padding: 10px 14px; border: 1px solid #dfdfdf; border-radius: 0 0 8px 8px; background-color: #f9f9f9; width: 100%; box-sizing: border-box; display: flex; justify-content: space-between; align-items: center;">
-        <div>
-          <img src="//t1.kakaocdn.net/localimg/localimages/07/2018/pc/common/logo_kakaomap.png" width="72" height="16" alt="카카오맵" style="vertical-align: middle;">
-        </div>
-        <div>
-          <a target="_blank" href="https://map.kakao.com/?urlX=981392&urlY=455952&urlLevel=3&map_type=TYPE_MAP&map_hybrid=false" 
-            style="font-size: 12px; text-decoration: none; color: #000; font-weight: 600;">
-            지도 크게 보기 →
-          </a>
-        </div>
+      <div>
+        <div id="daumRoughmapContainer1789664712243" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+        <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://t1.kakaocdn.net/kakaomapweb/roughmap/loader/prod/roughmapLoader.js"></script>
+        <script charset="UTF-8">
+          new daum.roughmap.Lander({
+            "timestamp" : "1789664712243",
+            "key" : "2wc33s8o66jz",
+            "mapWidth" : "1040",
+            "mapHeight" : "585"
+          }).render();
+        </script>
       </div>
+      
     </div>
   </div>
 </section>

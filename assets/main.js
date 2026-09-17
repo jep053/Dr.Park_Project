@@ -83,28 +83,3 @@
 
   render();
 })();
-
-// 카카오 동적 지도 (index.html 전용) — 주소를 좌표로 자동 변환해 마커까지 찍습니다.
-(function () {
-  var container = document.getElementById('kakao-map');
-  if (!container || typeof kakao === 'undefined') return; // 지도 SDK가 없는 페이지면 아무것도 하지 않음
-
-  var map = new kakao.maps.Map(container, {
-    center: new kakao.maps.LatLng(35.1195, 129.1122), // 임시 좌표 — 주소 변환 성공 시 아래에서 바로 갱신됨
-    level: 3
-  });
-
-  var geocoder = new kakao.maps.services.Geocoder();
-  geocoder.addressSearch('부산광역시 남구 용호로 141', function (result, status) {
-    if (status === kakao.maps.services.Status.OK) {
-      var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-      map.setCenter(coords);
-
-      var marker = new kakao.maps.Marker({ position: coords, map: map });
-      var infowindow = new kakao.maps.InfoWindow({
-        content: '<div style="padding:6px 10px; font-size:13px; white-space:nowrap;">박현용내과의원</div>'
-      });
-      infowindow.open(map, marker);
-    }
-  });
-})();
