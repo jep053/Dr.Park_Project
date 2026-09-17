@@ -165,46 +165,42 @@
 
     </div>
 
-    <!-- 하단: 카카오 동적 지도 (드래그, 확대/축소 지원) -->
-    <div style="margin-top: 50px; width: 100%;">
-      
-      <!-- 지도 표시 영역 -->
-      <div id="kakaomap" style="width: 100%; height: 380px; border-radius: 8px 8px 0 0; border: 1px solid #dfdfdf; border-bottom: none;"></div>
+<!-- 하단: 카카오 동적 지도 (정확한 위치 좌표 적용) -->
+<div style="margin-top: 50px; width: 100%;">
+  
+  <!-- 지도 표시 영역 -->
+  <div id="kakaomap" style="width: 100%; height: 380px; border-radius: 8px 8px 0 0; border: 1px solid #dfdfdf; border-bottom: none;"></div>
 
-      <!-- 지도 하단 로고 및 길찾기 바 -->
-      <div style="padding: 10px 14px; border: 1px solid #dfdfdf; border-radius: 0 0 8px 8px; background-color: #f9f9f9; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box;">
-        <div>
-          <img src="//t1.kakaocdn.net/localimg/localimages/07/2018/pc/common/logo_kakaomap.png" width="72" height="16" alt="카카오맵" style="vertical-align: middle;">
-        </div>
-        <div>
-          <a target="_blank" href="https://map.kakao.com/link/map/박현용내과의원,35.116668,129.106885" 
-             style="font-size: 12px; text-decoration: none; color: #000; font-weight: 600;">
-            카카오맵에서 길찾기 →
-          </a>
-        </div>
-      </div>
-
+  <!-- 지도 하단 로고 및 길찾기 바 -->
+  <div style="padding: 10px 14px; border: 1px solid #dfdfdf; border-radius: 0 0 8px 8px; background-color: #f9f9f9; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box;">
+    <div>
+      <img src="//t1.kakaocdn.net/localimg/localimages/07/2018/pc/common/logo_kakaomap.png" width="72" height="16" alt="카카오맵" style="vertical-align: middle;">
     </div>
-
+    <div>
+      <a target="_blank" href="https://map.kakao.com/?urlX=981393&urlY=455953&urlLevel=1&map_type=TYPE_MAP&map_hybrid=false" 
+         style="font-size: 12px; text-decoration: none; color: #000; font-weight: 600;">
+        카카오맵에서 크게 보기 →
+      </a>
+    </div>
   </div>
-</section>
+
+</div>
 
 <!-- 카카오 지도 초기화 자바스크립트 -->
 <script>
-  // 지도를 담을 영역 선택
   var container = document.getElementById('kakaomap');
   
-  // 지도 옵션 (박현용내과의원 위도: 35.116668, 경도: 129.106885)
+  // 새로 내보내기 해주신 정확한 위치 좌표 적용 (위도: 35.099192, 경도: 129.112117)
   var options = {
-    center: new kakao.maps.LatLng(35.116668, 129.106885),
-    level: 3 // 확대 레벨 (숫자가 작을수록 확대됨)
+    center: new kakao.maps.LatLng(35.099192, 129.112117),
+    level: 3 // 지도 확대 레벨
   };
 
   // 지도 생성
   var map = new kakao.maps.Map(container, options);
 
-  // 병원 위치 마커 생성 및 표시
-  var markerPosition  = new kakao.maps.LatLng(35.116668, 129.106885); 
+  // 박현용내과의원 위치 마커 생성 및 표시
+  var markerPosition  = new kakao.maps.LatLng(35.099192, 129.112117); 
   var marker = new kakao.maps.Marker({
       position: markerPosition
   });
