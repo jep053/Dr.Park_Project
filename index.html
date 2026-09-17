@@ -1,31 +1,33 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>박현용내과의원 | 부산 남구 용호동 내과·소화기내시경</title>
-<meta name="description" content="부산 남구 용호동, 20년 소화기내과 전문의 박현용내과의원. 위·대장내시경, 초음파, 건강검진, 만성질환 관리.">
-<link rel="stylesheet" href="assets/style.css">
-<link rel="icon" type="image/png" href="assets/img/favicon.svg">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "MedicalClinic",
-  "name": "박현용내과의원",
-  "medicalSpecialty": "Gastroenterology",
-  "telephone": "051-621-7105",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "용호로 141, 5층",
-    "addressLocality": "부산광역시 남구",
-    "addressCountry": "KR"
-  },
-  "openingHoursSpecification": [
-    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "18:00"},
-    {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:30", "closes": "13:00"}
-  ]
-}
-</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>박현용내과의원 | 부산 남구 용호동 내과·소화기내시경</title>
+  <meta name="description" content="부산 남구 용호동, 20년 소화기내과 전문의 박현용내과의원. 위·대장내시경, 초음파, 건강검진, 만성질환 관리.">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" type="image/png" href="assets/img/favicon.svg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    "name": "박현용내과의원",
+    "medicalSpecialty": "Gastroenterology",
+    "telephone": "051-621-7105",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "용호로 141, 5층",
+      "addressLocality": "부산광역시 남구",
+      "addressCountry": "KR"
+    },
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "18:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:30", "closes": "13:00"}
+    ]
+  }
+  </script>
+  <!-- 카카오 지도 API (발급받은 JavaScript Key 적용) -->
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bdd23a459f59ac65e5f2d9a77dbebcfc"></script>
 </head>
 <body>
 <div class="utility-bar"><div class="wrap"><a href="index.html#location">오시는길</a></div></div>
@@ -127,7 +129,7 @@
   </div>
 </section>
 
-<!-- 3. 오시는 길 (참고 사이트형 2열 구조) -->
+<!-- 3. 오시는 길 (카카오 동적 지도 적용) -->
 <section class="section" id="location">
   <div class="wrap">
     
@@ -146,6 +148,7 @@
 
       <!-- 오른쪽: 오시는 길 상세 안내 -->
       <div class="info">
+        <div style="display: inline-block; background: #333; color: #fff; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; margin-bottom: 12px; letter-spacing: 1px;">ROUGH MAP</div>
         <h3 style="font-size: 1.4rem; margin-bottom: 16px;">박현용내과의원 오시는 길</h3>
         
         <dl style="line-height: 1.8;">
@@ -162,15 +165,55 @@
 
     </div>
 
-    <!-- 하단: 네이버/카카오 지도 임베드 (필요시 배치) -->
-    <div style="margin-top: 60px;">
-      <div class="map-note" style="width: 100%; height: 320px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line);">
-        지도 임베드 자리
+    <!-- 하단: 카카오 동적 지도 (드래그, 확대/축소 지원) -->
+    <div style="margin-top: 50px; width: 100%;">
+      
+      <!-- 지도 표시 영역 -->
+      <div id="kakaomap" style="width: 100%; height: 380px; border-radius: 8px 8px 0 0; border: 1px solid #dfdfdf; border-bottom: none;"></div>
+
+      <!-- 지도 하단 로고 및 길찾기 바 -->
+      <div style="padding: 10px 14px; border: 1px solid #dfdfdf; border-radius: 0 0 8px 8px; background-color: #f9f9f9; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box;">
+        <div>
+          <img src="//t1.kakaocdn.net/localimg/localimages/07/2018/pc/common/logo_kakaomap.png" width="72" height="16" alt="카카오맵" style="vertical-align: middle;">
+        </div>
+        <div>
+          <a target="_blank" href="https://map.kakao.com/link/map/박현용내과의원,35.116668,129.106885" 
+             style="font-size: 12px; text-decoration: none; color: #000; font-weight: 600;">
+            카카오맵에서 길찾기 →
+          </a>
+        </div>
       </div>
+
     </div>
 
   </div>
 </section>
+
+<!-- 카카오 지도 초기화 자바스크립트 -->
+<script>
+  // 지도를 담을 영역 선택
+  var container = document.getElementById('kakaomap');
+  
+  // 지도 옵션 (박현용내과의원 위도: 35.116668, 경도: 129.106885)
+  var options = {
+    center: new kakao.maps.LatLng(35.116668, 129.106885),
+    level: 3 // 확대 레벨 (숫자가 작을수록 확대됨)
+  };
+
+  // 지도 생성
+  var map = new kakao.maps.Map(container, options);
+
+  // 병원 위치 마커 생성 및 표시
+  var markerPosition  = new kakao.maps.LatLng(35.116668, 129.106885); 
+  var marker = new kakao.maps.Marker({
+      position: markerPosition
+  });
+  marker.setMap(map);
+
+  // 우측 상단 지도 확대/축소 컨트롤러 추가 (+ / - 버튼)
+  var zoomControl = new kakao.maps.ZoomControl();
+  map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+</script>
 
 </main>
 
