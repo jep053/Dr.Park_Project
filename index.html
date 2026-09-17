@@ -27,7 +27,7 @@
   }
   </script>
   <!-- 카카오 지도 API (발급받은 JavaScript Key 적용) -->
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bdd23a459f59ac65e5f2d9a77dbebcfc"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bdd23a459f59ac65e5f2d9a77dbebcfc&libraries=services"></script>
 </head>
 <body>
 <div class="utility-bar"><div class="wrap"><a href="index.html#location">오시는길</a></div></div>
@@ -167,15 +167,9 @@
 
     <!-- 하단: 카카오맵 퍼가기 (반응형 정돈 버전) -->
     <div style="margin-top: 40px; width: 100%;">
-      
-      <!-- 1. 지도 정적 이미지 영역 -->
-      <div style="width: 100%; overflow: hidden; border-radius: 8px 8px 0 0; border: 1px solid #dfdfdf; border-bottom: none;">
-        <a href="https://map.kakao.com/?urlX=981392&urlY=455952&urlLevel=3&map_type=TYPE_MAP&map_hybrid=false" target="_blank" style="display: block; width: 100%;">
-          <img src="https://staticmap.kakao.com/map/mapservice?FORMAT=PNG&SCALE=2.5&MX=981392&MY=455952&S=0&IW=504&IH=310&LANG=0&COORDSTM=WCONGNAMUL&logo=kakao_logo" 
-              alt="박현용내과의원 카카오맵 위치" 
-              style="width: 100%; height: auto; display: block; border: none;">
-        </a>
-      </div>
+
+      <!-- 1. 실제 동적 지도 영역 -->
+      <div id="kakao-map" style="width: 100%; height: 360px; border-radius: 8px 8px 0 0; border: 1px solid #dfdfdf; border-bottom: none;"></div>
 
       <!-- 2. 카카오맵 하단 로고 및 '지도 크게 보기' 바 -->
       <div style="overflow: hidden; padding: 10px 14px; border: 1px solid #dfdfdf; border-radius: 0 0 8px 8px; background-color: #f9f9f9; width: 100%; box-sizing: border-box; display: flex; justify-content: space-between; align-items: center;">
