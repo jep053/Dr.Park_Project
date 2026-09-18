@@ -42,17 +42,23 @@
   }
 })();
 
-// 병원 둘러보기 캐러셀 — 사진 개수가 바뀌어도 도트 개수가 자동으로 맞춰집니다.
-(function () {
-  var root = document.getElementById('about-carousel');
-  if (!root) return; // about.html이 아니면 아무것도 하지 않음
-
+// 캐러셀 공용 초기화 — 페이지에 있는 .carousel 요소를 전부 찾아 각각 동작시킵니다.
+// (병원소개 사진 캐러셀, 홈 히어로 배너 등 여러 개를 같은 코드로 지원)
+document.querySelectorAll('.carousel').forEach(function (root) {
   var track = root.querySelector('.carousel-track');
   var slides = Array.prototype.slice.call(root.querySelectorAll('.carousel-slide'));
   var dotsWrap = root.querySelector('.carousel-dots');
+  var arrows = root.querySelector('.carousel-arrows');
   var prevBtn = root.querySelector('.carousel-arrow.prev');
   var nextBtn = root.querySelector('.carousel-arrow.next');
   var index = 0;
+
+  if (slides.length <= 1) {
+    // 사진이 한 장뿐이면 화살표·도트를 숨겨서 불필요한 조작 요소를 없앰
+    if (dotsWrap) dotsWrap.style.display = 'none';
+    if (arrows) arrows.style.display = 'none';
+    return;
+  }
 
   slides.forEach(function (_, i) {
     var dot = document.createElement('button');
@@ -68,7 +74,7 @@
     dots.forEach(function (d, i) { d.classList.toggle('active', i === index); });
   }
   function goTo(i) {
-    index = (i + slides.length) % slides.length; // 양쪽 끝에서 순환
+    index = (i + slides.length) % slides.length;
     render();
   }
 
@@ -82,4 +88,48 @@
   });
 
   render();
-})();
+});
+
+// 홈 공지 팝업 — "오늘 하루 보지 않기" 체크 시 자정까지 다시 뜨지 않음
+try {
+  (function () {
+    var overlay = document.getElementById('popup-overlay');
+    if (!overlay) return;
+
+    function todayStr() {
+      var d = new Date();
+      return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+    }
+
+    var boxes = Array.prototype.slice.call(overlay.querySelectorAll('.popup-box'));
+
+    function closeBox(box) {
+      box.remove();
+      if (!overlay.querySelector('.popup-box')) overlay.style.display = 'none';
+    }
+
+    boxes.forEach(function (box) {
+      var key = 'popup-hidden-' + box.getAttribute('data-popup-id');
+      if (localStorage.getItem(key) === todayStr()) {
+        box.remove();
+        return;
+      }
+      box.querySelector('.popup-close').addEventListener('click', function () {
+        closeBox(box);
+      });
+      box.querySelector('.popup-hide-today input').addEventListener('change', function (e) {
+        if (e.target.checked) {
+          localStorage.setItem(key, todayStr());
+          closeBox(box);
+        }
+      });
+    });
+
+    // 보여줄 팝업 박스가 하나라도 남아있다면 오버레이를 켬
+    if (overlay.querySelector('.popup-box')) {
+      overlay.style.display = 'flex';
+    }
+  })();
+} catch (e) {
+  // localStorage 접근 제한 환경 대비
+}

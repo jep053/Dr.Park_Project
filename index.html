@@ -28,7 +28,15 @@
   </script>
 </head>
 <body>
-<div class="utility-bar"><div class="wrap"><a href="index.html#location">오시는길</a></div></div>
+  <div class="popup-overlay" id="popup-overlay">
+    <div class="popup-box" data-popup-id="flu-2026">
+      <button class="popup-close" aria-label="닫기">✕</button>
+      <img src="assets/img/flu-shot.jpeg" alt="2026년 독감 예방접종 안내 — 65세 이상 어르신 무료 접종, 유료 3가 독감백신 1회 40,000원, 신분증 지참, 접종 문의 051-621-7105">
+      <label class="popup-hide-today"><input type="checkbox"> 오늘 하루 보지 않기</label>
+    </div>
+  </div>
+  <div class="utility-bar">
+  <div class="wrap"><a href="index.html#location">오시는길</a></div></div>
 
 <header class="site-header"><div class="wrap">
   <a class="logo" href="index.html"><img src="assets/img/logo.svg" alt="박현용내과의원" style="height:60px; display:block;"></a>
@@ -51,14 +59,15 @@
 
 <main>
 
-<section class="hero">
-  <span class="photo-note">[사진: 진료 장면 / 병원 내부 — 풀와이드 배경]</span>
-  <div class="wrap">
-    <div class="hero-card">
-      <div class="hero-eyebrow">PARK HYUNYONG INTERNAL MEDICINE CLINIC</div>
-      <h1>환자 중심의 정확한 진료<br>박현용내과의원입니다.</h1>
-      <p class="lede">2002년 부터 부산 남구 용호동에서, 10만 명 이상의 환자와 함께한 박현용 내과의원은 소화기내과 전문성을 바탕으로 정확한 진단과 맞춤 진료를 하고 있습니다.</p>
-      <a class="pill-btn" href="tel:051-621-7105">☎ 대표문의전화. 051-621-7105</a>
+<section class="hero-wrap">
+  <div class="carousel hero-carousel" id="hero-carousel">
+    <div class="carousel-track">
+      <div class="carousel-slide"><img src="assets/img/home-image.jpg" alt="박현용내과의원 — 환자 중심의 정확한 진료. 2002년부터 부산 남구 용호동에서 10만 명 이상의 환자와 함께한 소화기내과 전문 진료. 대표문의전화 051-621-7105"></div>
+    </div>
+    <div class="carousel-dots"></div>
+    <div class="carousel-arrows">
+      <button class="carousel-arrow prev" aria-label="이전 사진">‹</button>
+      <button class="carousel-arrow next" aria-label="다음 사진">›</button>
     </div>
   </div>
 </section>
@@ -66,6 +75,7 @@
 <!-- 1. 진료·검진센터 (4아이콘) -->
 <section class="section">
   <div class="wrap">
+    <h1 class="sr-only">박현용내과의원 | 부산 남구 용호동 소화기내과 전문의원</h1>
     <h2> <strong>국가건강검진 지정기관</strong> · <strong>위·대장내시경 센터</strong> </h2>
     <p class="sub">
       필요한 진료를 카테고리별로 빠르게 찾아보세요.

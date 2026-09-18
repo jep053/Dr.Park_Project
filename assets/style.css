@@ -516,3 +516,37 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
 #daumRoughmapContainer1789664712243 .section_address {
   display: none !important;
 }
+
+.hero-carousel { border: none; }
+.hero-carousel .carousel-slide { aspect-ratio: 18 / 5; }
+@media (max-width: 700px) { .hero-carousel .carousel-slide { aspect-ratio: 4 / 3; } }
+
+/* ---------- 공지 팝업 ---------- */
+.popup-overlay {
+  display: none; 
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.55);
+  align-items: center; justify-content: center;
+  gap: 20px; flex-wrap: wrap;
+  padding: 20px; z-index: 1000;
+}
+.popup-box {
+  position: relative;
+  background: #fff;
+  width: 100%; max-width: 600px;
+  border-radius: 8px; overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+.popup-box img { width: 100%; display: block; }
+.popup-close {
+  position: absolute; top: 8px; right: 8px;
+  width: 28px; height: 28px; border: none; border-radius: 50%;
+  background: rgba(0,0,0,0.55); color: #fff; font-size: 15px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  z-index: 2;
+}
+.popup-hide-today {
+  display: flex; align-items: center; gap: 6px;
+  padding: 10px 14px; font-size: 13px; color: var(--ink2);
+  background: var(--cream); cursor: pointer;
+}
