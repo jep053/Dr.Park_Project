@@ -532,7 +532,7 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
   justify-content: flex-end; /* 오른쪽 정렬 */
   
   gap: 20px; flex-wrap: wrap;
-  padding: 40px 20px 20px 20px; /* 상단 여백(40px)을 살짝 주어 화면 위에 딱 붙지 않게 조절 */
+  padding: 120px 180px 20px 20px; /* 상단 여백(40px)을 살짝 주어 화면 위에 딱 붙지 않게 조절 */
   z-index: 1000;
 }
 .popup-box {
