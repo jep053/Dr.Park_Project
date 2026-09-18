@@ -224,17 +224,34 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
 .section .sub { font-size: 17px; color: var(--ink2); margin: 0 0 32px; }
 
 /* ---------- 4up category cards (home) ---------- */
+/* 카테고리 그리드 레이아웃 */
 .cat-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  grid-template-columns: repeat(4, 1fr); /* PC에서는 4열 */
+  border-top: 1px solid #e2e8f0;         /* 전체 상단 선 */
+  border-left: 1px solid #e2e8f0;        /* 전체 좌측 선 */
 }
+
+/* 각 아이템 테두리 설정 (우측, 하단만 선을 주어 겹침 방지) */
 .cat-grid a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 32px 20px;
-  text-align: center;
-  border-right: 1px solid var(--line);
-  color: var(--ink);
+  background-color: #ffffff;
+  border-right: 1px solid #e2e8f0;  /* 오른쪽 구분선 */
+  border-bottom: 1px solid #e2e8f0; /* 아래쪽 구분선 (가운데 가로선 역할) */
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+/* 화면이 줄어들어 2열로 바뀔 때 (반응형 미디어 쿼리) */
+@media (max-width: 900px) {
+  .cat-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2열 2행 배치 */
+  }
 }
 .cat-grid a:last-child { border-right: none; }
 
@@ -265,7 +282,7 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
   border: 2px solid var(--blue);
   border-radius: 50%;
 }
-.cat-grid .t { font-size: 17px; font-weight: 600; }
+.cat-grid .t { font-size: 17px; color: #111111; font-weight: 600; }
 .cat-grid .d { font-size: 15px; color: var(--ink3); margin-top: 2px; }
 
 @media (max-width: 760px) {
@@ -558,7 +575,7 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
 .popup-box {
   position: relative;
   background: #fff;
-  width: 100%; max-width: 600px;
+  width: 100%; max-width: 500px;
   border-radius: 8px; overflow: hidden;
   box-shadow: 0 10px 40px rgba(0,0,0,0.3);
 }
