@@ -512,3 +512,7 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
   border-radius: 0;
 }
 
+/* 카카오 지도 퍼가기 위젯 하단의 주소/전화 텍스트 숨김 (지도 위 마커에 이미 병원명 표시됨) */
+#daumRoughmapContainer1789664712243 .section_address {
+  display: none !important;
+}
