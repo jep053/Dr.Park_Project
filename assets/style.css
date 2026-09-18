@@ -555,3 +555,31 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
   padding: 10px 14px; font-size: 13px; color: var(--ink2);
   background: var(--cream); cursor: pointer;
 }
+
+/* 푸터 저작권 문구 스타일 */
+.site-footer .copyright {
+  margin-top: 8px;
+  font-size: 0.85em;
+  opacity: 0.8;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.site-footer .dev-credit {
+  opacity: 0.7;
+}
+
+/* ---------- 텍스트 선택/복사 방지 ---------- */
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+/* 입력창(FAQ 검색)은 정상적으로 타이핑 가능하게 예외 처리 */
+input, textarea {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  user-select: text;
+}

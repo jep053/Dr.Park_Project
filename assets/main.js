@@ -133,3 +133,8 @@ try {
 } catch (e) {
   // localStorage 접근 제한 환경 대비
 }
+
+// 텍스트 복사/우클릭 방지 (효과는 제한적이며, 개발자도구로는 우회 가능함을 참고)
+document.addEventListener('copy', function (e) { e.preventDefault(); });
+document.addEventListener('cut', function (e) { e.preventDefault(); });
+document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
