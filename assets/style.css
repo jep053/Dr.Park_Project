@@ -125,20 +125,28 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
   .nav-check:checked ~ ul { display: flex; }
   .main-nav a { display: block; padding: 14px 24px; border-bottom: 1px solid rgba(255,255,255,0.15); }
   .nav-toggle-label {
-    display: block;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
     background: var(--blue);
     color: #fff;
     width: 100%;
-    text-align: left;
     padding: 14px 24px;
     font-size: 17px;
     font-weight: 500;
     cursor: pointer;
   }
-  .nav-toggle-label::after { content: '☰'; float: right; }
+  .nav-toggle-label::after { content: '☰'; }
   .nav-check:checked ~ .nav-toggle-label::after { content: '✕'; }
-  .phone-block .number { font-size: 17px; }
+  .phone-block .label { font-size: 11px; white-space: nowrap; }
+  .phone-block .number { font-size: 15px; white-space: nowrap; }
   .logo { font-size: 18px; }
+  .site-header .logo img { height: 36px !important; }
+  .utility-bar .wrap,
+  .site-header .wrap {
+    padding: 0 20px;
+  }
 }
 
 /* ---------- breadcrumb ---------- */
@@ -450,7 +458,13 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
 
 /* ---------- info list (health-info) ---------- */
 .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-@media (max-width: 700px) { .info-grid { grid-template-columns: 1fr; } }
+@media (max-width: 700px) {
+  .info-grid { grid-template-columns: 1fr; }
+  .section { padding: 36px 0; }
+  .page-head { padding: 28px 0 0; }
+  .page-head h1 { font-size: 24px; }
+  .page-head .sub { font-size: 17px; }
+}
 .info-card {
   border: 1px solid var(--line);
   padding: 22px;
@@ -469,7 +483,9 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
 
 /* ---------- location (home bottom) ---------- */
 .location-grid { display: grid; grid-template-columns: 1.3fr 1fr; border-top: 1px solid var(--line); }
-@media (max-width: 800px) { .location-grid { grid-template-columns: 1fr; } }
+@media (max-width: 800px) {
+  .location-grid { grid-template-columns: 1fr; }
+}
 .location-grid .map-note {
   min-height: 300px;
   background: repeating-linear-gradient(135deg, #f5f4f1 0 10px, #eceae5 10px 20px);
@@ -477,6 +493,9 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
   font-size: 17px; color: var(--ink3); font-family: ui-monospace, monospace;
 }
 .location-grid .info { padding: 44px 48px; }
+@media (max-width: 800px) {
+  .location-grid .info { padding: 24px 0; }
+}
 .location-grid dl { font-size: 17px; color: var(--ink2); line-height: 2.1; margin: 0 0 22px; }
 .location-grid dt { font-weight: 600; color: var(--ink); display: inline; }
 .location-grid dd { display: inline; margin: 0; }
@@ -497,6 +516,11 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
 .page-head h1 { font-size: 32px; font-weight: 600; letter-spacing: -0.03em; margin: 0; }
 .page-head .sub { font-size: 22px; color: var(--ink2); margin-top: 6px; }
 
+
+.director-photo { width: 320px; height: 320px; flex-shrink: 0; object-fit: cover; }
+@media (max-width: 700px) {
+  .director-photo { width: 100%; max-width: 260px; height: auto; aspect-ratio: 1 / 1; margin: 0 auto; }
+}
 
 .doctor-preview { display:flex; gap:40px; align-items:center; }
 .doctor-preview .thumb-sq { width:180px; height:180px; flex-shrink:0; border:1px dashed var(--line-strong); display:flex; align-items:center; justify-content:center; font-size:12px; color:var(--ink3); }
