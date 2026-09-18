@@ -526,14 +526,19 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
   display: none; 
   position: fixed; inset: 0;
   background: rgba(0,0,0,0.55);
-  align-items: center; justify-content: center;
+  
+  /* 정중앙(center)에서 오른쪽 상단으로 변경 */
+  align-items: flex-start;   /* 위쪽 정렬 */
+  justify-content: flex-end; /* 오른쪽 정렬 */
+  
   gap: 20px; flex-wrap: wrap;
-  padding: 20px; z-index: 1000;
+  padding: 40px 20px 20px 20px; /* 상단 여백(40px)을 살짝 주어 화면 위에 딱 붙지 않게 조절 */
+  z-index: 1000;
 }
 .popup-box {
   position: relative;
   background: #fff;
-  width: 100%; max-width: 600px;
+  width: 100%; max-width: 450px;
   border-radius: 8px; overflow: hidden;
   box-shadow: 0 10px 40px rgba(0,0,0,0.3);
 }
