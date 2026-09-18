@@ -648,3 +648,9 @@ input, textarea {
 /* ---------- 지도 크기 조절 ---------- */
 .map-embed-wrap { width: 100%; }
 .map-embed-scale { width: 1040px; transform-origin: top left; }
+
+.map-mobile-link { display: none; }
+@media (max-width: 700px) {
+  .map-embed-wrap { display: none; }
+  .map-mobile-link { display: inline-flex; margin-top: 12px; }
+}
