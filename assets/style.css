@@ -237,7 +237,27 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
   color: var(--ink);
 }
 .cat-grid a:last-child { border-right: none; }
-.cat-grid a:hover { background: var(--cream); }
+
+/* 자세히 보기 파란색 강조 버튼 스타일 */
+.cat-grid .btn-more {
+  margin-top: 14px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0056b3;             /* 신뢰감을 주는 내과 브랜드 파란색 */
+  background-color: #f0f7ff;  /* 파란색 텍스트가 잘 돋보이는 연한 파란 배경 */
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+/* 마우스를 올렸을 때(Hover) 파란색 버튼 반전 효과 */
+.cat-grid a:hover .btn-more {
+  background-color: #0056b3;  /* 진한 파란색 배경으로 변경 */
+  color: #ffffff;             /* 글자색 흰색으로 반전 */
+}
 .cat-dot {
   display: inline-block;
   width: 34px; height: 34px;
@@ -583,3 +603,7 @@ input, textarea {
   -moz-user-select: text;
   user-select: text;
 }
+
+/* ---------- 지도 크기 조절 ---------- */
+.map-embed-wrap { width: 100%; }
+.map-embed-scale { width: 1040px; transform-origin: top left; }

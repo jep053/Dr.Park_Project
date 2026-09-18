@@ -82,10 +82,26 @@
     </p>
   </div>
   <div class="cat-grid">
-    <a href="clinics/endoscopy.html"><span class="cat-dot"></span><div class="t">위·대장내시경</div><div class="d">당일 용종절제</div></a>
-    <a href="clinics/checkup.html"><span class="cat-dot"></span><div class="t">종합건강검진</div><div class="d">정밀 초음파</div></a>
-    <a href="clinics/chronic.html"><span class="cat-dot"></span><div class="t">만성질환 관리</div><div class="d">당뇨병·고혈압</div></a>
-    <a href="clinics/vaccine.html"><span class="cat-dot"></span><div class="t">예방접종·수액</div><div class="d">스트레스 측정</div></a>
+    <a href="clinics/endoscopy.html">
+      <div class="t">위·대장내시경</div>
+      <div class="d">당일 용종절제</div>
+      <span class="btn-more">자세히 보기 →</span>
+    </a>
+    <a href="clinics/checkup.html">
+      <div class="t">종합건강검진</div>
+      <div class="d">정밀 초음파</div>
+      <span class="btn-more">자세히 보기 →</span>
+    </a>
+    <a href="clinics/chronic.html">
+      <div class="t">만성질환 관리</div>
+      <div class="d">당뇨병·고혈압</div>
+      <span class="btn-more">자세히 보기 →</span>
+    </a>
+    <a href="clinics/vaccine.html">
+      <div class="t">예방접종·수액</div>
+      <div class="d">스트레스 측정</div>
+      <span class="btn-more">자세히 보기 →</span>
+    </a>
   </div>
 </section>
 
@@ -175,17 +191,20 @@
     <!-- 하단: 카카오맵 퍼가기 (반응형 정돈 버전) -->
     <div style="margin-top: 40px; width: 100%;">
 
-      <div>
-        <div id="daumRoughmapContainer1789664712243" class="root_daum_roughmap root_daum_roughmap_landing"></div>
-        <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://t1.kakaocdn.net/kakaomapweb/roughmap/loader/prod/roughmapLoader.js"></script>
-        <script charset="UTF-8">
-          new daum.roughmap.Lander({
-            "timestamp" : "1789664712243",
-            "key" : "2wc33s8o66jz",
-            "mapWidth" : "1040",
-            "mapHeight" : "585"
-          }).render();
-        </script>
+      <!-- 1. 카카오 지도 퍼가기 — 화면 폭에 맞춰 비율 그대로 축소됨 -->
+      <div class="map-embed-wrap">
+        <div class="map-embed-scale">
+          <div id="daumRoughmapContainer1789664712243" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+          <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://t1.kakaocdn.net/kakaomapweb/roughmap/loader/prod/roughmapLoader.js"></script>
+          <script charset="UTF-8">
+            new daum.roughmap.Lander({
+              "timestamp" : "1789664712243",
+              "key" : "2wc33s8o66jz",
+              "mapWidth" : "1040",
+              "mapHeight" : "585"
+            }).render();
+          </script>
+        </div>
       </div>
       
     </div>

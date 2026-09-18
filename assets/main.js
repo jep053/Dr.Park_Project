@@ -138,3 +138,22 @@ try {
 document.addEventListener('copy', function (e) { e.preventDefault(); });
 document.addEventListener('cut', function (e) { e.preventDefault(); });
 document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+
+// 카카오 지도 퍼가기 위젯을 화면 폭에 맞춰 비율대로 축소 (위젯 자체는 반응형을 지원하지 않아 transform으로 처리)
+(function () {
+  var wrap = document.querySelector('.map-embed-wrap');
+  var inner = document.querySelector('.map-embed-scale');
+  if (!wrap || !inner) return;
+
+  var ORIGINAL_WIDTH = 1040;
+  var ORIGINAL_HEIGHT = 585;
+
+  function resize() {
+    var scale = Math.min(1, wrap.clientWidth / ORIGINAL_WIDTH); // 원본보다 커지지는 않게(1이 최대)
+    inner.style.transform = 'scale(' + scale + ')';
+    wrap.style.height = (ORIGINAL_HEIGHT * scale) + 'px'; // 축소된 만큼 감싸는 영역 높이도 줄여서 밑에 빈 공간 안 남게 함
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+})();
