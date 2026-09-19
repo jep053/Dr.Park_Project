@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://REPLACE-WITH-DOMAIN/sitemap.xml
+Sitemap: https://drparkclinic.vercel.app/sitemap.xml
+ 
