@@ -527,7 +527,8 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
 .doctor-cred { font-size:17px; color:var(--ink2); line-height:2; margin:0 0 20px; padding-left:18px; }
 
 .faq-preview-grid { display:grid; grid-template-columns:1.5fr 1fr; gap:40px; }
-.faq-preview-list { border-top:1px solid var(--line); margin:16px 0 20px; }
+.faq-preview-list { margin:16px 0 20px; }
+.faq-preview-list .faq-item[open] { margin: 0; padding: 0; }
 .faq-preview-item { display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-bottom:1px solid var(--line); font-size:15px; }
 .faq-preview-item .sign { color:var(--blue); flex-shrink:0; }
 .hours-box { background:var(--white); border:1px solid var(--line); padding:24px; align-self:start; }
