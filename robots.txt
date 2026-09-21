@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://drparkclinic.vercel.app/sitemap.xml
- 
+Sitemap: https://www.imdrpark.co.kr/sitemap.xml
