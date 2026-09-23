@@ -27,6 +27,17 @@ body {
   background: var(--white);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  /* 텍스트 선택/복사 방지 */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+/* 입력창(FAQ 검색) 타이핑 예외 처리 */
+input, textarea {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  user-select: text;
 }
 
 a { color: var(--blue); text-decoration: none; }
@@ -68,8 +79,6 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
 .site-header .wrap {
   max-width: none;
   padding: 0 48px;
-}
-.site-header .wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -232,15 +241,13 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
 .section .sub { font-size: 17px; color: var(--ink2); margin: 0 0 32px; }
 
 /* ---------- 4up category cards (home) ---------- */
-/* 카테고리 그리드 레이아웃 */
 .cat-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* PC에서는 4열 */
-  border-top: 1px solid #e2e8f0;         /* 전체 상단 선 */
-  border-left: 1px solid #e2e8f0;        /* 전체 좌측 선 */
+  grid-template-columns: repeat(4, 1fr); /* PC 4열 */
+  border-top: 1px solid #e2e8f0;
+  border-left: 1px solid #e2e8f0;
 }
 
-/* 각 아이템 테두리 설정 (우측, 하단만 선을 주어 겹침 방지) */
 .cat-grid a {
   display: flex;
   flex-direction: column;
@@ -248,29 +255,39 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
   justify-content: center;
   padding: 32px 20px;
   background-color: #ffffff;
-  border-right: 1px solid #e2e8f0;  /* 오른쪽 구분선 */
-  border-bottom: 1px solid #e2e8f0; /* 아래쪽 구분선 (가운데 가로선 역할) */
+  border-right: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0; /* 반응형 2열 전환 시 가로 구분선 확보 */
   text-decoration: none;
   transition: all 0.2s ease;
   box-sizing: border-box;
 }
 
-/* 화면이 줄어들어 2열로 바뀔 때 (반응형 미디어 쿼리) */
-@media (max-width: 900px) {
-  .cat-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2열 2행 배치 */
-  }
+.cat-dot {
+  display: none; /* 불필요한 원 숨김 */
 }
-.cat-grid a:last-child { border-right: none; }
 
-/* 자세히 보기 파란색 강조 버튼 스타일 */
+/* 제목 글자색을 검은색으로 고정 */
+.cat-grid .t { 
+  font-size: 18px; 
+  color: #111111; 
+  font-weight: 700; 
+  margin-bottom: 4px;
+}
+
+.cat-grid a:hover .t {
+  color: #111111; /* Hover 시에도 검은색 유지 */
+}
+
+.cat-grid .d { font-size: 15px; color: var(--ink3); margin-top: 2px; }
+
+/* 자세히 보기 파란색 강조 버튼 */
 .cat-grid .btn-more {
   margin-top: 14px;
   padding: 6px 14px;
   font-size: 13px;
   font-weight: 600;
-  color: #0056b3;             /* 신뢰감을 주는 내과 브랜드 파란색 */
-  background-color: #f0f7ff;  /* 파란색 텍스트가 잘 돋보이는 연한 파란 배경 */
+  color: #0056b3;
+  background-color: #f0f7ff;
   border-radius: 20px;
   display: inline-flex;
   align-items: center;
@@ -278,24 +295,15 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
   transition: all 0.2s ease;
 }
 
-/* 마우스를 올렸을 때(Hover) 파란색 버튼 반전 효과 */
 .cat-grid a:hover .btn-more {
-  background-color: #0056b3;  /* 진한 파란색 배경으로 변경 */
-  color: #ffffff;             /* 글자색 흰색으로 반전 */
+  background-color: #0056b3;
+  color: #ffffff;
 }
-.cat-dot {
-  display: inline-block;
-  width: 34px; height: 34px;
-  margin: 0 auto 14px;
-  border: 2px solid var(--blue);
-  border-radius: 50%;
-}
-.cat-grid .t { font-size: 17px; color: #111111; font-weight: 600; }
-.cat-grid .d { font-size: 15px; color: var(--ink3); margin-top: 2px; }
 
-@media (max-width: 760px) {
-  .cat-grid { grid-template-columns: repeat(2, 1fr); }
-  .cat-grid a:nth-child(2n) { border-right: none; }
+@media (max-width: 900px) {
+  .cat-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2열 2행 배치 */
+  }
 }
 
 /* ---------- card grid (equipment, clinic hub) ---------- */
@@ -339,12 +347,128 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
 .hub-card .items { font-size: 14px; color: var(--ink2); line-height: 2; }
 
 /* ---------- timeline ---------- */
-.timeline { display: flex; align-items: flex-start; margin-top: 56px; }
-.timeline .step { flex: 1; text-align: center; position: relative; }
-.timeline .date { position: absolute; bottom: 100%; left: 0; right: 0; margin-bottom: 10px; font-weight: 700; font-size: 14px; color: var(--ink); white-space: nowrap; }
-.timeline .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--blue); margin: 0 auto 14px; }
-.timeline .label { font-size: 14px; color: var(--ink2); line-height: 1.7; }
-.timeline .rule { flex: 1; height: 2px; background: var(--blue); margin-top: 6px; }
+.timeline { 
+  display: flex; 
+  align-items: flex-start; 
+  margin-top: 56px; 
+}
+.timeline .step { 
+  flex: 1; 
+  text-align: center; 
+  position: relative; 
+}
+.timeline .date { 
+  position: absolute; 
+  bottom: 100%; 
+  left: 0; 
+  right: 0; 
+  margin-bottom: 10px; 
+  font-weight: 700; 
+  font-size: 14px; 
+  color: var(--ink); 
+  white-space: nowrap; 
+}
+.timeline .dot { 
+  width: 14px; 
+  height: 14px; 
+  border-radius: 50%; 
+  background: var(--blue); 
+  margin: 0 auto 14px; 
+}
+.timeline .rule { 
+  flex: 1; 
+  height: 2px; 
+  background: var(--blue); 
+  margin-top: 6px; 
+}
+
+/* 타임라인 라벨 내 리스트 및 빨간 도트 스타일 */
+.timeline .label {
+  font-size: 14px;
+  color: var(--ink2);
+  line-height: 1.7;
+}
+
+.timeline .label ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  display: inline-block;
+}
+
+.timeline .label li {
+  position: relative;
+  padding-left: 14px;
+  margin-bottom: 6px;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+.timeline .label li:last-child {
+  margin-bottom: 0;
+}
+
+.timeline .label li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  background-color: var(--ink2); /* 약한 검은색(#555555) 또는 var(--ink3) 권장 */
+  border-radius: 50%;
+}
+
+.timeline .label .note {
+  display: block;
+  font-size: 0.85em;
+  color: var(--ink3);
+  margin-top: 2px;
+}
+
+/* 모바일 전용 타임라인 (768px 이하 세로 카드형 전환) */
+@media (max-width: 768px) {
+  .timeline {
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .timeline .rule,
+  .timeline .dot {
+    display: none; /* 가로 구분선 및 중앙 원 숨김 */
+  }
+
+  .timeline .step {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background-color: var(--white);
+    padding: 18px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    box-sizing: border-box;
+    text-align: left;
+  }
+
+  .timeline .date {
+    position: static;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: var(--blue);
+  }
+
+  .timeline .label {
+    width: 100%;
+  }
+
+  .timeline .label ul {
+    display: block;
+  }
+}
 
 /* ---------- clinic detail blocks ---------- */
 .detail-blocks { display: flex; flex-direction: column; gap: 16px; }
@@ -511,11 +635,24 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
   border-top: 1px solid var(--line);
 }
 
+.site-footer .copyright {
+  margin-top: 8px;
+  font-size: 0.85em;
+  opacity: 0.8;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.site-footer .dev-credit {
+  opacity: 0.7;
+}
+
 /* ---------- page header (inner pages) ---------- */
 .page-head { padding: 44px 0 0; }
 .page-head h1 { font-size: 32px; font-weight: 600; letter-spacing: -0.03em; margin: 0; }
 .page-head .sub { font-size: 22px; color: var(--ink2); margin-top: 6px; }
-
 
 .director-photo { width: 320px; height: 320px; flex-shrink: 0; object-fit: cover; }
 @media (max-width: 700px) {
@@ -536,7 +673,7 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
 @media (max-width:700px){ .doctor-preview{flex-direction:column; text-align:center;} }
 @media (max-width:800px){ .faq-preview-grid{grid-template-columns:1fr;} }
 
-/* ---------- carousel (병원 둘러보기) ---------- */
+/* ---------- carousel ---------- */
 .carousel { position: relative; overflow: hidden; border: 1px solid var(--line); }
 .carousel-track { display: flex; transition: transform 0.4s ease; }
 .carousel-slide { flex: 0 0 100%; aspect-ratio: 16 / 9; }
@@ -559,6 +696,10 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
 }
 .carousel-dot.active { background: var(--blue); }
 
+.hero-carousel { border: none; }
+.hero-carousel .carousel-slide { aspect-ratio: 18 / 5; }
+@media (max-width: 700px) { .hero-carousel .carousel-slide { aspect-ratio: 4 / 3; } }
+
 /* ---------- equipment card photo ---------- */
 .card .photo { width: 100%; height: 220px; object-fit: contain; padding: 12px; display: block; margin-bottom: 14px; }
 
@@ -574,27 +715,36 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
   border-radius: 0;
 }
 
-/* 카카오 지도 퍼가기 위젯 하단의 주소/전화 텍스트 숨김 (지도 위 마커에 이미 병원명 표시됨) */
+/* 카카오 지도 위젯 하단 주소 텍스트 숨김 */
 #daumRoughmapContainer1789664712243 .section_address {
   display: none !important;
 }
 
-.hero-carousel { border: none; }
-.hero-carousel .carousel-slide { aspect-ratio: 18 / 5; }
-@media (max-width: 700px) { .hero-carousel .carousel-slide { aspect-ratio: 4 / 3; } }
+/* ---------- 지도 크기 조절 (하단 잘림 방지 반영) ---------- */
+.map-embed-wrap { 
+  width: 100%; 
+  /* overflow: hidden; 삭제 -> 카카오 지도 하단 길찾기 바가 보임 */
+}
+.map-embed-scale { 
+  width: 1040px; 
+  transform-origin: top left; 
+}
+
+.map-mobile-link { display: none; }
+@media (max-width: 700px) {
+  .map-embed-wrap { display: none; }
+  .map-mobile-link { display: inline-flex; margin-top: 12px; }
+}
 
 /* ---------- 공지 팝업 ---------- */
 .popup-overlay {
   display: none; 
   position: fixed; inset: 0;
   background: rgba(0,0,0,0.55);
-  
-  /* 정중앙(center)에서 오른쪽 상단으로 변경 */
-  align-items: flex-start;   /* 위쪽 정렬 */
-  justify-content: flex-end; /* 오른쪽 정렬 */
-  
+  align-items: flex-start;   /* 우측 상단 정렬 */
+  justify-content: flex-end; 
   gap: 20px; flex-wrap: wrap;
-  padding: 70px 50px 20px 20px; /* 상단 여백(40px)을 살짝 주어 화면 위에 딱 붙지 않게 조절 */
+  padding: 70px 50px 20px 20px;
   z-index: 1000;
 }
 .popup-box {
@@ -616,42 +766,4 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
   display: flex; align-items: center; gap: 6px;
   padding: 10px 14px; font-size: 13px; color: var(--ink2);
   background: var(--cream); cursor: pointer;
-}
-
-/* 푸터 저작권 문구 스타일 */
-.site-footer .copyright {
-  margin-top: 8px;
-  font-size: 0.85em;
-  opacity: 0.8;
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.site-footer .dev-credit {
-  opacity: 0.7;
-}
-
-/* ---------- 텍스트 선택/복사 방지 ---------- */
-body {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-}
-/* 입력창(FAQ 검색)은 정상적으로 타이핑 가능하게 예외 처리 */
-input, textarea {
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  user-select: text;
-}
-
-/* ---------- 지도 크기 조절 ---------- */
-.map-embed-wrap { width: 100%; }
-.map-embed-scale { width: 1040px; transform-origin: top left; }
-
-.map-mobile-link { display: none; }
-@media (max-width: 700px) {
-  .map-embed-wrap { display: none; }
-  .map-mobile-link { display: inline-flex; margin-top: 12px; }
 }
