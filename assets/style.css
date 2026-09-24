@@ -437,7 +437,7 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
 
   .timeline .rule,
   .timeline .dot {
-    display: none; /* 가로 구분선 및 중앙 원 숨김 */
+    display: none;
   }
 
   .timeline .step {
@@ -454,11 +454,13 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
     text-align: left;
   }
 
+  /* 모바일 날짜/제목: PC 웹과 동일하게 검은색 Bold, 14px로 지정 */
   .timeline .date {
     position: static;
     margin-bottom: 8px;
-    font-size: 16px;
-    color: var(--blue);
+    font-size: 14px;        /* PC 웹 스타일(14px)과 동일하게 축소 */
+    font-weight: 700;       /* Bold 굵기 */
+    color: var(--ink);      /* 파란색 대신 PC와 동일한 검은색(#1a1a1a) */
   }
 
   .timeline .label {
@@ -467,6 +469,15 @@ a:focus-visible, button:focus-visible, .faq-q:focus-visible {
 
   .timeline .label ul {
     display: block;
+  }
+
+  /* 부가설명 문구도 PC 제목 수준으로 동일하게 맞춤 */
+  .timeline .label .note {
+    display: inline;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-top: 0;
   }
 }
 
